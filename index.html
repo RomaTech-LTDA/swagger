@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>@romatech/swagger - docs</title>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+	<style>
+		/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+		/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+		body {
+			font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+			font-size: var(--vscode-markdown-font-size, 14px);
+			padding: 0 26px;
+			line-height: var(--vscode-markdown-line-height, 22px);
+			word-wrap: break-word;
+		}
+
+		#code-csp-warning {
+			position: fixed;
+			top: 0;
+			right: 0;
+			color: white;
+			margin: 16px;
+			text-align: center;
+			font-size: 12px;
+			font-family: sans-serif;
+			background-color: #444444;
+			cursor: pointer;
+			padding: 6px;
+			box-shadow: 1px 1px 1px rgba(0, 0, 0, .25);
+		}
+
+		#code-csp-warning:hover {
+			text-decoration: none;
+			background-color: #007acc;
+			box-shadow: 2px 2px 2px rgba(0, 0, 0, .25);
+		}
+
+		body.scrollBeyondLastLine {
+			margin-bottom: calc(100vh - 22px);
+		}
+
+		body.showEditorSelection .code-line {
+			position: relative;
+		}
+
+		body.showEditorSelection .code-active-line:before,
+		body.showEditorSelection .code-line:hover:before {
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0;
+			left: -12px;
+			height: 100%;
+		}
+
+		body.showEditorSelection li.code-active-line:before,
+		body.showEditorSelection li.code-line:hover:before {
+			left: -30px;
+		}
+
+		.vscode-light.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(0, 0, 0, 0.15);
+		}
+
+		.vscode-light.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(0, 0, 0, 0.40);
+		}
+
+		.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+			border-left: none;
+		}
+
+		.vscode-dark.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(255, 255, 255, 0.4);
+		}
+
+		.vscode-dark.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(255, 255, 255, 0.60);
+		}
+
+		.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+			border-left: none;
+		}
+
+		.vscode-high-contrast.showEditorSelection .code-active-line:before {
+			border-left: 3px solid rgba(255, 160, 0, 0.7);
+		}
+
+		.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+			border-left: 3px solid rgba(255, 160, 0, 1);
+		}
+
+		.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+			border-left: none;
+		}
+
+		img {
+			max-width: 100%;
+			max-height: 100%;
+		}
+
+		a {
+			text-decoration: none;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		a:focus,
+		input:focus,
+		select:focus,
+		textarea:focus {
+			outline: 1px solid -webkit-focus-ring-color;
+			outline-offset: -1px;
+		}
+
+		hr {
+			border: 0;
+			height: 2px;
+			border-bottom: 2px solid;
+		}
+
+		h1 {
+			padding-bottom: 0.3em;
+			line-height: 1.2;
+			border-bottom-width: 1px;
+			border-bottom-style: solid;
+		}
+
+		h1,
+		h2,
+		h3 {
+			font-weight: normal;
+		}
+
+		table {
+			border-collapse: collapse;
+		}
+
+		table>thead>tr>th {
+			text-align: left;
+			border-bottom: 1px solid;
+		}
+
+		table>thead>tr>th,
+		table>thead>tr>td,
+		table>tbody>tr>th,
+		table>tbody>tr>td {
+			padding: 5px 10px;
+		}
+
+		table>tbody>tr+tr>td {
+			border-top: 1px solid;
+		}
+
+		blockquote {
+			margin: 0 7px 0 5px;
+			padding: 0 16px 0 10px;
+			border-left-width: 5px;
+			border-left-style: solid;
+		}
+
+		code {
+			font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+			font-size: 1em;
+			line-height: 1.357em;
+		}
+
+		body.wordWrap pre {
+			white-space: pre-wrap;
+		}
+
+		pre:not(.hljs),
+		pre.hljs code>div {
+			padding: 16px;
+			border-radius: 3px;
+			overflow: auto;
+		}
+
+		pre code {
+			color: var(--vscode-editor-foreground);
+			tab-size: 4;
+		}
+
+		/** Theming */
+
+		.vscode-light pre {
+			background-color: rgba(220, 220, 220, 0.4);
+		}
+
+		.vscode-dark pre {
+			background-color: rgba(10, 10, 10, 0.4);
+		}
+
+		.vscode-high-contrast pre {
+			background-color: rgb(0, 0, 0);
+		}
+
+		.vscode-high-contrast h1 {
+			border-color: rgb(0, 0, 0);
+		}
+
+		.vscode-light table>thead>tr>th {
+			border-color: rgba(0, 0, 0, 0.69);
+		}
+
+		.vscode-dark table>thead>tr>th {
+			border-color: rgba(255, 255, 255, 0.69);
+		}
+
+		.vscode-light h1,
+		.vscode-light hr,
+		.vscode-light table>tbody>tr+tr>td {
+			border-color: rgba(0, 0, 0, 0.18);
+		}
+
+		.vscode-dark h1,
+		.vscode-dark hr,
+		.vscode-dark table>tbody>tr+tr>td {
+			border-color: rgba(255, 255, 255, 0.18);
+		}
+	</style>
+
+	<style>
+		/* Tomorrow Theme */
+		/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+		/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+		/* Tomorrow Comment */
+		.hljs-comment,
+		.hljs-quote {
+			color: #8e908c;
+		}
+
+		/* Tomorrow Red */
+		.hljs-variable,
+		.hljs-template-variable,
+		.hljs-tag,
+		.hljs-name,
+		.hljs-selector-id,
+		.hljs-selector-class,
+		.hljs-regexp,
+		.hljs-deletion {
+			color: #c82829;
+		}
+
+		/* Tomorrow Orange */
+		.hljs-number,
+		.hljs-built_in,
+		.hljs-builtin-name,
+		.hljs-literal,
+		.hljs-type,
+		.hljs-params,
+		.hljs-meta,
+		.hljs-link {
+			color: #f5871f;
+		}
+
+		/* Tomorrow Yellow */
+		.hljs-attribute {
+			color: #eab700;
+		}
+
+		/* Tomorrow Green */
+		.hljs-string,
+		.hljs-symbol,
+		.hljs-bullet,
+		.hljs-addition {
+			color: #718c00;
+		}
+
+		/* Tomorrow Blue */
+		.hljs-title,
+		.hljs-section {
+			color: #4271ae;
+		}
+
+		/* Tomorrow Purple */
+		.hljs-keyword,
+		.hljs-selector-tag {
+			color: #8959a8;
+		}
+
+		.hljs {
+			display: block;
+			overflow-x: auto;
+			color: #4d4d4c;
+			padding: 0.5em;
+		}
+
+		.hljs-emphasis {
+			font-style: italic;
+		}
+
+		.hljs-strong {
+			font-weight: bold;
+		}
+	</style>
+
+	<style>
+		/*
+ * Markdown PDF CSS
+ */
+
+		body {
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+			padding: 0 12px;
+		}
+
+		pre {
+			background-color: #f8f8f8;
+			border: 1px solid #cccccc;
+			border-radius: 3px;
+			overflow-x: auto;
+			white-space: pre-wrap;
+			overflow-wrap: break-word;
+		}
+
+		pre:not(.hljs) {
+			padding: 23px;
+			line-height: 19px;
+		}
+
+		blockquote {
+			background: rgba(127, 127, 127, 0.1);
+			border-color: rgba(0, 122, 204, 0.5);
+		}
+
+		.emoji {
+			height: 1.4em;
+		}
+
+		code {
+			font-size: 14px;
+			line-height: 19px;
+		}
+
+		/* for inline code */
+		:not(pre):not(.hljs)>code {
+			color: #C9AE75;
+			/* Change the old color so it seems less like an error */
+			font-size: inherit;
+		}
+
+		/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+		.page {
+			page-break-after: always;
+		}
+
+		header {
+			height: 60px;
+			display: flex;
+			align-items: center;
+			padding: 0 1rem;
+			gap: 1rem;
+			z-index: 1000;
+		}
+
+		header img {
+			height: 60px;
+			width: auto;
+		}
+
+		header h1 {
+			font-size: 1.25rem;
+			margin: 0;
+			flex-grow: 1;
+			user-select: none;
+		}
+
+		header nav.links {
+			display: flex;
+			gap: 1rem;
+		}
+
+		header nav.links a {
+			text-decoration: none;
+			font-weight: 600;
+			border: 1px solid;
+			padding: 0.25rem 0.75rem;
+			border-radius: 4px;
+			transition: background-color 0.3s;
+		}
+
+		header nav.links a:hover,
+		header nav.links a:focus {
+			background-color: rgba(255 255 255 / 0.3);
+			outline: none;
+		}
+	</style>
+
+	<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+
+<body>
+	<script>
+		mermaid.initialize({
+			startOnLoad: true,
+			theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+				? 'dark'
+				: 'default'
+		});
+	</script>
+	<header>
+		<img src="logo.png" alt="RomaTech Logo" />
+		<h1 id="romatechswagger">@romatech/swagger</h1>
+		<nav class="links" aria-label="External links">
+			<a href="https://github.com/RomaTech-LTDA/swagger" target="_blank" rel="noopener noreferrer"
+				aria-label="GitHub repository">GitHub</a>
+			<a href="https://www.npmjs.com/package/@romatech/swagger" target="_blank" rel="noopener noreferrer"
+				aria-label="NPM package page">NPM</a>
+		</nav>
+	</header>
+	<p>Zero-config Swagger/OpenAPI documentation generator for Node.js.</p>
+	<p>Uses TypeScript AST analysis to automatically detect your routes and generate an OpenAPI 3.0 spec — no
+		decorators, no annotations, no changes to your existing code.</p>
+	<p>Works with <strong>Express</strong>, <strong>Fastify</strong>, and <strong>Koa</strong>.</p>
+	<hr>
+	<h2 id="installation">Installation</h2>
+	<pre class="hljs"><code><div>npm install @romatech/swagger
+</div></code></pre>
+	<blockquote>
+		<p>Requires TypeScript ≥ 5.0 and Node.js ≥ 18.</p>
+	</blockquote>
+	<hr>
+	<h2 id="quick-start">Quick Start</h2>
+	<p>Add two lines to your existing application. That's it.</p>
+	<pre class="hljs"><code><div><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;express&#x27;</span>;
+<span class="hljs-keyword">import</span> { useSwagger, useSwaggerUi } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@romatech/swagger&#x27;</span>;
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();
+
+app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/users&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">json</span>([{ <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Alice&#x27;</span> }]);
+});
+
+app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/users&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">status</span>(<span class="hljs-number">201</span>).<span class="hljs-title function_">json</span>({ <span class="hljs-attr">id</span>: <span class="hljs-number">2</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Bob&#x27;</span> });
+});
+
+app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/users/:id&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">json</span>({ <span class="hljs-attr">id</span>: req.<span class="hljs-property">params</span>.<span class="hljs-property">id</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Alice&#x27;</span> });
+});
+
+<span class="hljs-comment">// Register swagger — no config needed</span>
+<span class="hljs-title function_">useSwagger</span>(app);    <span class="hljs-comment">// → GET /api-docs.json</span>
+<span class="hljs-title function_">useSwaggerUi</span>(app);  <span class="hljs-comment">// → GET /api-docs</span>
+
+app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>, <span class="hljs-function">() =&gt;</span> <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;http://localhost:3000/api-docs&#x27;</span>));
+</div></code></pre>
+	<p>Open <code>http://localhost:3000/api-docs</code> and your docs are live.</p>
+	<hr>
+	<h2 id="supported-frameworks">Supported Frameworks</h2>
+	<h3 id="express">Express</h3>
+	<pre class="hljs"><code><div><span class="hljs-keyword">import</span> express <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;express&#x27;</span>;
+<span class="hljs-keyword">import</span> { useSwagger, useSwaggerUi } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@romatech/swagger&#x27;</span>;
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-title function_">express</span>();
+
+<span class="hljs-title function_">useSwagger</span>(app);
+<span class="hljs-title function_">useSwaggerUi</span>(app);
+</div></code></pre>
+	<h3 id="fastify">Fastify</h3>
+	<pre class="hljs"><code><div><span class="hljs-keyword">import</span> <span class="hljs-title class_">Fastify</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;fastify&#x27;</span>;
+<span class="hljs-keyword">import</span> { useSwagger, useSwaggerUi } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@romatech/swagger&#x27;</span>;
+
+<span class="hljs-keyword">const</span> fastify = <span class="hljs-title class_">Fastify</span>();
+
+fastify.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/products&#x27;</span>, <span class="hljs-title function_">async</span> (req, reply) =&gt; {
+  <span class="hljs-keyword">return</span> [{ <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Widget&#x27;</span> }];
+});
+
+<span class="hljs-title function_">useSwagger</span>(fastify);
+<span class="hljs-title function_">useSwaggerUi</span>(fastify);
+
+fastify.<span class="hljs-title function_">listen</span>({ <span class="hljs-attr">port</span>: <span class="hljs-number">3000</span> });
+</div></code></pre>
+	<h3 id="koa">Koa</h3>
+	<pre class="hljs"><code><div><span class="hljs-keyword">import</span> <span class="hljs-title class_">Koa</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;koa&#x27;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Router</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@koa/router&#x27;</span>;
+<span class="hljs-keyword">import</span> { useSwagger, useSwaggerUi } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@romatech/swagger&#x27;</span>;
+
+<span class="hljs-keyword">const</span> app = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Koa</span>();
+<span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Router</span>();
+
+router.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/orders&#x27;</span>, <span class="hljs-title function_">async</span> (ctx) =&gt; {
+  ctx.<span class="hljs-property">body</span> = [{ <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">status</span>: <span class="hljs-string">&#x27;pending&#x27;</span> }];
+});
+
+<span class="hljs-title function_">useSwagger</span>(router);   <span class="hljs-comment">// Pass the router, not app</span>
+<span class="hljs-title function_">useSwaggerUi</span>(router);
+
+app.<span class="hljs-title function_">use</span>(router.<span class="hljs-title function_">routes</span>());
+app.<span class="hljs-title function_">listen</span>(<span class="hljs-number">3000</span>);
+</div></code></pre>
+	<hr>
+	<h2 id="configuration">Configuration</h2>
+	<p>Both <code>useSwagger</code> and <code>useSwaggerUi</code> accept an optional config object.</p>
+	<pre class="hljs"><code><div><span class="hljs-title function_">useSwagger</span>(app, {
+  <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;My API&#x27;</span>,
+  <span class="hljs-attr">description</span>: <span class="hljs-string">&#x27;Manages users and products.&#x27;</span>,
+  <span class="hljs-attr">version</span>: <span class="hljs-string">&#x27;2.1.0&#x27;</span>,
+  <span class="hljs-attr">specPath</span>: <span class="hljs-string">&#x27;/openapi.json&#x27;</span>,   <span class="hljs-comment">// where the JSON spec is served</span>
+  <span class="hljs-attr">uiPath</span>: <span class="hljs-string">&#x27;/docs&#x27;</span>,             <span class="hljs-comment">// where the UI is served</span>
+  <span class="hljs-attr">basePath</span>: <span class="hljs-string">&#x27;/api/v1&#x27;</span>,         <span class="hljs-comment">// prepended to all routes</span>
+  <span class="hljs-attr">sourcePatterns</span>: [<span class="hljs-string">&#x27;./src/**/*.ts&#x27;</span>],
+  <span class="hljs-attr">tsConfigPath</span>: <span class="hljs-string">&#x27;./tsconfig.json&#x27;</span>,
+  <span class="hljs-attr">servers</span>: [
+    { <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;https://api.example.com&#x27;</span>, <span class="hljs-attr">description</span>: <span class="hljs-string">&#x27;Production&#x27;</span> },
+    { <span class="hljs-attr">url</span>: <span class="hljs-string">&#x27;http://localhost:3000&#x27;</span>, <span class="hljs-attr">description</span>: <span class="hljs-string">&#x27;Local&#x27;</span> },
+  ],
+});
+
+<span class="hljs-title function_">useSwaggerUi</span>(app, {
+  <span class="hljs-attr">uiPath</span>: <span class="hljs-string">&#x27;/docs&#x27;</span>,
+  <span class="hljs-attr">specPath</span>: <span class="hljs-string">&#x27;/openapi.json&#x27;</span>,
+});
+</div></code></pre>
+	<table>
+		<thead>
+			<tr>
+				<th>Option</th>
+				<th>Type</th>
+				<th>Default</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><code>title</code></td>
+				<td><code>string</code></td>
+				<td><code>&quot;API Documentation&quot;</code></td>
+				<td>Title shown in the UI header</td>
+			</tr>
+			<tr>
+				<td><code>description</code></td>
+				<td><code>string</code></td>
+				<td>—</td>
+				<td>Short API description</td>
+			</tr>
+			<tr>
+				<td><code>version</code></td>
+				<td><code>string</code></td>
+				<td><code>&quot;1.0.0&quot;</code></td>
+				<td>API version</td>
+			</tr>
+			<tr>
+				<td><code>specPath</code></td>
+				<td><code>string</code></td>
+				<td><code>&quot;/api-docs.json&quot;</code></td>
+				<td>Path where the OpenAPI JSON is served</td>
+			</tr>
+			<tr>
+				<td><code>uiPath</code></td>
+				<td><code>string</code></td>
+				<td><code>&quot;/api-docs&quot;</code></td>
+				<td>Path where the Swagger UI is served</td>
+			</tr>
+			<tr>
+				<td><code>basePath</code></td>
+				<td><code>string</code></td>
+				<td>—</td>
+				<td>Prefix prepended to all detected routes</td>
+			</tr>
+			<tr>
+				<td><code>sourcePatterns</code></td>
+				<td><code>string[]</code></td>
+				<td><code>[&quot;./src/**/*.ts&quot;]</code></td>
+				<td>Glob patterns for files to analyze</td>
+			</tr>
+			<tr>
+				<td><code>tsConfigPath</code></td>
+				<td><code>string</code></td>
+				<td><code>&quot;./tsconfig.json&quot;</code></td>
+				<td>Path to your tsconfig.json</td>
+			</tr>
+			<tr>
+				<td><code>servers</code></td>
+				<td><code>ServerConfig[]</code></td>
+				<td>—</td>
+				<td>Server URLs to list in the spec</td>
+			</tr>
+			<tr>
+				<td><code>securitySchemes</code></td>
+				<td><code>object</code></td>
+				<td>—</td>
+				<td>OpenAPI security scheme definitions</td>
+			</tr>
+			<tr>
+				<td><code>tags</code></td>
+				<td><code>TagConfig[]</code></td>
+				<td>—</td>
+				<td>Global tag definitions</td>
+			</tr>
+		</tbody>
+	</table>
+	<hr>
+	<h2 id="enriching-documentation-with-jsdoc">Enriching Documentation with JSDoc</h2>
+	<p>The analyzer reads standard JSDoc comments to enrich your spec. No extra libraries or annotations are needed —
+		just regular JSDoc.</p>
+	<pre class="hljs"><code><div><span class="hljs-comment">/**
+ * Retrieves all users in the system.
+ *
+ * <span class="hljs-doctag">@summary</span> List users
+ * <span class="hljs-doctag">@tag</span> <span class="hljs-variable">Users</span>
+ */</span>
+app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/users&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">json</span>([]);
+});
+
+<span class="hljs-comment">/**
+ * Creates a new user account.
+ *
+ * <span class="hljs-doctag">@summary</span> Create user
+ * <span class="hljs-doctag">@tag</span> <span class="hljs-variable">Users</span>
+ * <span class="hljs-doctag">@deprecated</span>
+ */</span>
+app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/users&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  res.<span class="hljs-title function_">status</span>(<span class="hljs-number">201</span>).<span class="hljs-title function_">json</span>({});
+});
+</div></code></pre>
+	<h3 id="supported-jsdoc-tags">Supported JSDoc Tags</h3>
+	<table>
+		<thead>
+			<tr>
+				<th>Tag</th>
+				<th>Effect</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><code>@summary</code></td>
+				<td>Short one-line title for the operation</td>
+			</tr>
+			<tr>
+				<td><code>@tag &lt;name&gt;</code></td>
+				<td>Groups the endpoint under a named tag in the UI</td>
+			</tr>
+			<tr>
+				<td><code>@deprecated</code></td>
+				<td>Marks the endpoint as deprecated</td>
+			</tr>
+			<tr>
+				<td>First JSDoc paragraph</td>
+				<td>Used as the <code>summary</code> if <code>@summary</code> is absent</td>
+			</tr>
+			<tr>
+				<td>Remaining paragraphs</td>
+				<td>Used as the <code>description</code></td>
+			</tr>
+		</tbody>
+	</table>
+	<hr>
+	<h2 id="automatic-type-inference">Automatic Type Inference</h2>
+	<p>The analyzer uses the TypeScript compiler to resolve types from your handler signatures and map them directly to
+		OpenAPI schemas.</p>
+	<pre class="hljs"><code><div><span class="hljs-keyword">interface</span> <span class="hljs-title class_">User</span> {
+  <span class="hljs-attr">id</span>: <span class="hljs-built_in">number</span>;
+  <span class="hljs-attr">name</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">email</span>: <span class="hljs-built_in">string</span>;
+  <span class="hljs-attr">role</span>: <span class="hljs-string">&#x27;admin&#x27;</span> | <span class="hljs-string">&#x27;user&#x27;</span>;
+}
+
+<span class="hljs-comment">// The return type is inferred → User schema is auto-generated</span>
+app.<span class="hljs-title function_">get</span>(<span class="hljs-string">&#x27;/users/:id&#x27;</span>, (req, res): <span class="hljs-function"><span class="hljs-params">void</span> =&gt;</span> {
+  <span class="hljs-keyword">const</span> <span class="hljs-attr">user</span>: <span class="hljs-title class_">User</span> = { <span class="hljs-attr">id</span>: <span class="hljs-number">1</span>, <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;Alice&#x27;</span>, <span class="hljs-attr">email</span>: <span class="hljs-string">&#x27;alice@example.com&#x27;</span>, <span class="hljs-attr">role</span>: <span class="hljs-string">&#x27;user&#x27;</span> };
+  res.<span class="hljs-title function_">json</span>(user);
+});
+</div></code></pre>
+	<p>Generated schema in the spec:</p>
+	<pre class="hljs"><code><div><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">&quot;User&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;object&quot;</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;properties&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">&quot;id&quot;</span><span class="hljs-punctuation">:</span>    <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;number&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;name&quot;</span><span class="hljs-punctuation">:</span>  <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;string&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;email&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;string&quot;</span> <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">&quot;role&quot;</span><span class="hljs-punctuation">:</span>  <span class="hljs-punctuation">{</span> <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;string&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-attr">&quot;enum&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;admin&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;user&quot;</span><span class="hljs-punctuation">]</span> <span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+    <span class="hljs-attr">&quot;required&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-string">&quot;id&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;name&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;email&quot;</span><span class="hljs-punctuation">,</span> <span class="hljs-string">&quot;role&quot;</span><span class="hljs-punctuation">]</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
+</div></code></pre>
+	<hr>
+	<h2 id="advanced-accessing-the-raw-spec">Advanced: Accessing the Raw Spec</h2>
+	<p>If you need the spec object directly (for testing, export, or custom serving):</p>
+	<pre class="hljs"><code><div><span class="hljs-keyword">import</span> { generateSpec, analyzeRoutes } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@romatech/swagger&#x27;</span>;
+
+<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> <span class="hljs-title function_">analyzeRoutes</span>({
+  <span class="hljs-attr">sourcePatterns</span>: [<span class="hljs-string">&#x27;./src/**/*.ts&#x27;</span>],
+  <span class="hljs-attr">tsConfigPath</span>: <span class="hljs-string">&#x27;./tsconfig.json&#x27;</span>,
+});
+
+<span class="hljs-keyword">const</span> spec = <span class="hljs-title function_">generateSpec</span>(result, {
+  <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;My API&#x27;</span>,
+  <span class="hljs-attr">version</span>: <span class="hljs-string">&#x27;1.0.0&#x27;</span>,
+});
+
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-title class_">JSON</span>.<span class="hljs-title function_">stringify</span>(spec, <span class="hljs-literal">null</span>, <span class="hljs-number">2</span>));
+</div></code></pre>
+	<hr>
+	<h2 id="advanced-cache-invalidation">Advanced: Cache Invalidation</h2>
+	<p>The spec is generated once and cached in memory. During development with hot-reload, you can force regeneration:
+	</p>
+	<pre class="hljs"><code><div><span class="hljs-keyword">import</span> { invalidateCache } <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@romatech/swagger/middleware&#x27;</span>;
+
+<span class="hljs-comment">// Call this after file changes</span>
+<span class="hljs-title function_">invalidateCache</span>();
+</div></code></pre>
+	<hr>
+	<h2 id="how-it-works">How It Works</h2>
+	<ol>
+		<li><strong>File scanning</strong> — Resolves all <code>.ts</code> files matching your
+			<code>sourcePatterns</code>.</li>
+		<li><strong>AST parsing</strong> — Uses <code>ts-morph</code> (TypeScript compiler API) to build a full syntax
+			tree.</li>
+		<li><strong>Framework detection</strong> — Identifies Express/Fastify/Koa by import statements and usage
+			patterns.</li>
+		<li><strong>Route extraction</strong> — Finds all <code>app.get(path, handler)</code>,
+			<code>fastify.route({...})</code>, <code>router.post(path, handler)</code> calls.</li>
+		<li><strong>Type resolution</strong> — Resolves TypeScript types from return types and <code>res.json()</code>
+			arguments into OpenAPI schemas.</li>
+		<li><strong>JSDoc extraction</strong> — Reads <code>@summary</code>, <code>@tag</code>, <code>@deprecated</code>
+			from handler comments.</li>
+		<li><strong>Spec generation</strong> — Assembles a valid OpenAPI 3.0.3 JSON object.</li>
+		<li><strong>Serving</strong> — Registers <code>GET /api-docs.json</code> and <code>GET /api-docs</code> routes
+			on your app.</li>
+	</ol>
+	<hr>
+	<h2 id="multi-status-response-detection">Multi-Status Response Detection</h2>
+	<p>The analyzer detects all <code>res.status(N).json()</code> chains automatically. Every HTTP status code is
+		supported — not just 200 and 404.</p>
+	<pre class="hljs"><code><div>app.<span class="hljs-title function_">post</span>(<span class="hljs-string">&#x27;/users&#x27;</span>, <span class="hljs-function">(<span class="hljs-params">req, res</span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (!req.<span class="hljs-property">body</span>.<span class="hljs-property">email</span>) {
+    <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">400</span>).<span class="hljs-title function_">json</span>({ <span class="hljs-attr">error</span>: <span class="hljs-string">&#x27;Email is required&#x27;</span>, <span class="hljs-attr">field</span>: <span class="hljs-string">&#x27;email&#x27;</span> });
+  }
+  <span class="hljs-keyword">if</span> (!req.<span class="hljs-property">user</span>) {
+    <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">401</span>).<span class="hljs-title function_">json</span>({ <span class="hljs-attr">error</span>: <span class="hljs-string">&#x27;Not authenticated&#x27;</span> });
+  }
+  <span class="hljs-keyword">if</span> (req.<span class="hljs-property">user</span>.<span class="hljs-property">role</span> !== <span class="hljs-string">&#x27;admin&#x27;</span>) {
+    <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">403</span>).<span class="hljs-title function_">json</span>({ <span class="hljs-attr">error</span>: <span class="hljs-string">&#x27;Admin only&#x27;</span> });
+  }
+  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">await</span> <span class="hljs-title function_">userExists</span>(req.<span class="hljs-property">body</span>.<span class="hljs-property">email</span>)) {
+    <span class="hljs-keyword">return</span> res.<span class="hljs-title function_">status</span>(<span class="hljs-number">409</span>).<span class="hljs-title function_">json</span>({ <span class="hljs-attr">error</span>: <span class="hljs-string">&#x27;User already exists&#x27;</span> });
+  }
+  <span class="hljs-keyword">const</span> user = <span class="hljs-keyword">await</span> <span class="hljs-title function_">createUser</span>(req.<span class="hljs-property">body</span>);
+  res.<span class="hljs-title function_">status</span>(<span class="hljs-number">201</span>).<span class="hljs-title function_">json</span>(user);
+});
+</div></code></pre>
+	<p>This generates responses for <strong>all 5 status codes</strong> with their respective schemas — no annotations
+		needed.</p>
+	<hr>
+	<h2 id="roadmap">Roadmap</h2>
+	<ul>
+		<li><input type="checkbox" id="checkbox0"><label for="checkbox0">JS support via Babel AST parsing</label></li>
+		<li><input type="checkbox" id="checkbox1"><label for="checkbox1">Request body schema inference (Zod, Joi, Yup
+				integration)</label></li>
+		<li><input type="checkbox" id="checkbox2"><label for="checkbox2"><code>@param</code> JSDoc tag for query/header
+				parameters</label></li>
+		<li><input type="checkbox" id="checkbox3"><label for="checkbox3"><code>@returns {StatusCode}</code> JSDoc tag
+				for multiple response codes</label></li>
+		<li><input type="checkbox" id="checkbox4"><label for="checkbox4">YAML output option</label></li>
+		<li><input type="checkbox" id="checkbox5"><label for="checkbox5">CLI:
+				<code>npx romatech-swagger generate</code></label></li>
+		<li><input type="checkbox" id="checkbox6"><label for="checkbox6">Watch mode for development</label></li>
+	</ul>
+	<hr>
+	<h2 id="development">Development</h2>
+	<pre class="hljs"><code><div><span class="hljs-comment"># Install dependencies</span>
+npm install
+
+<span class="hljs-comment"># Build</span>
+npm run build
+
+<span class="hljs-comment"># Run tests</span>
+npm <span class="hljs-built_in">test</span>
+
+<span class="hljs-comment"># Build &amp; watch</span>
+npm run dev
+</div></code></pre>
+	<hr>
+	<h2 id="publishing">Publishing</h2>
+	<pre class="hljs"><code><div><span class="hljs-comment"># Login to npm (first time)</span>
+npm login --scope=@romatech
+
+<span class="hljs-comment"># Publish</span>
+npm publish
+</div></code></pre>
+	<p>The <code>prepublishOnly</code> script automatically builds and runs tests before publishing.</p>
+	<hr>
+	<h2 id="license">License</h2>
+	<p>MIT</p>
+
+</body>
+
+</html>
