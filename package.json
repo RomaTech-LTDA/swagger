@@ -1,0 +1,80 @@
+{
+  "name": "@romatech/swagger",
+  "version": "1.0.0",
+  "description": "Zero-config Swagger/OpenAPI generator for Node.js via TypeScript AST analysis. No decorators, no annotations — just plug and play.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js"
+    },
+    "./middleware": {
+      "types": "./dist/middleware/index.d.ts",
+      "require": "./dist/middleware/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "lint": "eslint src --ext .ts",
+    "prepublishOnly": "npm run build && npm test"
+  },
+  "keywords": [
+    "swagger",
+    "openapi",
+    "documentation",
+    "api",
+    "ast",
+    "typescript",
+    "express",
+    "fastify",
+    "koa",
+    "zero-config",
+    "automatic",
+    "auto-generate",
+    "no-decorators",
+    "no-annotations"
+  ],
+  "author": "Romatech",
+  "license": "MIT",
+  "homepage": "https://github.com/rfrfrfrm/swagger#readme",
+  "bugs": {
+    "url": "https://github.com/rfrfrfrm/swagger/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rfrfrfrm/swagger.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "glob": "^11.0.0",
+    "swagger-ui-dist": "^5.18.0",
+    "ts-morph": "^24.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  },
+  "peerDependencies": {
+    "typescript": ">=5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": false
+    }
+  }
+}

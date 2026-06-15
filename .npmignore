@@ -1,0 +1,29 @@
+# Source files (dist is published)
+src/
+tests/
+
+# Config & dev files
+tsconfig.json
+.eslintrc*
+.prettierrc*
+.editorconfig
+vitest.config.*
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Misc
+node_modules/
+coverage/
+*.tgz
