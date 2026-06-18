@@ -45,13 +45,13 @@
   ],
   "author": "Romatech",
   "license": "MIT",
-  "homepage": "https://github.com/rfrfrfrm/swagger#readme",
+  "homepage": "https://github.com/RomaTech-LTDA/swagger#readme",
   "bugs": {
-    "url": "https://github.com/rfrfrfrm/swagger/issues"
+    "url": "https://github.com/RomaTech-LTDA/swagger/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rfrfrfrm/swagger.git"
+    "url": "git+https://github.com/RomaTech-LTDA/swagger.git"
   },
   "engines": {
     "node": ">=18.0.0"
