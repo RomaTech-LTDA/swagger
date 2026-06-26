@@ -1,6 +1,6 @@
 {
   "name": "@romatech/swagger",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "Zero-config Swagger/OpenAPI generator for Node.js via TypeScript AST analysis. No decorators, no annotations — just plug and play.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
